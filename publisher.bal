@@ -13,13 +13,6 @@ type StompConfig record{
     string encoding = "UTF-8";
 };
 
-//type MessageDetails record {
-//    string subscriptionId;
-//    string messageId;
-//    string contentType;
-//    string destination;
-//};
-
 type Connection object{
 
     function send(byte[] |string message , string destination) returns error? {
@@ -36,7 +29,7 @@ type Connection object{
         //code
     }
 
-    # onMessage method will return the message string for the function pointer //receive
+    //onMessage method will return the message string for the function pointer //receive
     function subscribe ( string destination, string subscriptionId, function (string) returns ( string ) receive)
                 returns error? {
         //code
