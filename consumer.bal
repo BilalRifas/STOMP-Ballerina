@@ -1,28 +1,7 @@
-import ballerina/io;
-import ballerina/log;
-import ballerina/stomp;
-
-type StompConfig record{
-    string user = "admin";
-    string password = "admin";
-    string host = "localhost";
-    int port = 61616;
-    SecureSocket? secureSocket;
-    int heartbeats = 0;
-    string vhost ="admin";
-    string encoding = "UTF-8";
-};
-
-//type MessageDetails record {
-//    string subscriptionId;
-//    string messageId;
-//    string contentType;
-//    string destination;
-//};
 
 type Connection object{
 
-    function send(byte[] |string message , string destination) returns error? {
+    function receive(byte[] |string message , string destination) returns error? {
         match message{
             byte[] msg => { }
             string txt => { }
@@ -30,52 +9,34 @@ type Connection object{
     }
 
     public new (StompConfig config){
+         createConnection();
     }
 
-    function close(){
-        //code
-    }
+    function createConnection();
 
-    # onMessage method will return the message string for the function pointer //receive
+    // onMessage method will return the message string for the function pointer //receive
     function subscribe ( string destination, string subscriptionId, function (string) returns ( string ) receive)
-                 returns error? {
-
-        //code
+        returns error? {
+                return;
     }
-
-
-
 
     function acknowledge(string ackId, string messageId) returns error? {
-        return;
+                return;
     }
 
+    function unsubscribe ( string destination, string subscriptionId, function (string) returns ( string ) )
+        returns error? {
+                return;
+    }
+
+    function disconnect ( string receipt, function (string) returns ( string ) )
+        returns error? {
+                return;
+    }
 
     // The function which gets called when the timer goes off
     private (function( string message ) returns error?) receive;
 
-};
-
-type Message object{
-    string msg;
-
+    function receive(int timeoutInMilliSeconds = 0) returns (Message|error)?;
 
 };
-
-function (int, string) returns (float) f = getIt();
-
-public function main(string... args) {
-    StompConfig config = {};
-    stomp:Connection conn = new (config);
-    //Message message = new ();
-
-
-    match (conn.subscribe("queue/foo","sub1") )  {
-        () => { }
-        error e => { log:printError("Error occurred while sending message", err = e); }
-    }
-
-
-    conn.close();
-}
-
