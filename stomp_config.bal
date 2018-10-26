@@ -15,7 +15,6 @@ public type SecureSocket record {
     Store? keyStore,
     string sslCertAlias,
 };
-
 public type Store record {
     string path,
     string password,
