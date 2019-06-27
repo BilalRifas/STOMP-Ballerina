@@ -1,7 +1,0 @@
-[proxy]
-host = "localhost"
-port = "3128"
-username = ""
-password = ""
-[central]
-accesstoken="b453e36c-e8ae-3dcb-aef7-37ef9528ea0d"
