@@ -7,7 +7,7 @@ Stomp Client is used to connect with Brokers
 Following example demonstrates a way to publish a message to a specified queue. A Stomp message is created from string, and then it is published to queue 'test-stomp' in remote Stomp specific broker.
 
 ```ballerina
-import ballerina/stomp;
+import bilal/stomp;
 
 stomp:Sender stompSender = new({
         host: "localhost",
